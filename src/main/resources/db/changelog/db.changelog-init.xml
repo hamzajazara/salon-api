@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<!-- Tables -->
+	<changeSet author="Hamza Aljazara" id="1">
+		<createTable tableName="addresses">
+			<column autoIncrement="true" name="address_id" type="BIGINT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="created_at" type="datetime(6)" />
+			<column name="created_by" type="BIGINT" />
+			<column name="updated_at" type="datetime(6)" />
+			<column name="updated_by" type="BIGINT" />
+			<column name="address_email" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="address_location" type="POINT" />
+			<column name="address_location_name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="address_phone_number" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="2">
+		<createTable tableName="admin_users">
+			<column name="user_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="3">
+		<createTable tableName="cities">
+			<column autoIncrement="true" name="city_id" type="BIGINT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="created_at" type="datetime(6)" />
+			<column name="created_by" type="BIGINT" />
+			<column name="updated_at" type="datetime(6)" />
+			<column name="updated_by" type="BIGINT" />
+			<column name="city_label" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="city_name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="country_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="4">
+		<createTable tableName="countries">
+			<column autoIncrement="true" name="country_id" type="BIGINT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="created_at" type="datetime(6)" />
+			<column name="created_by" type="BIGINT" />
+			<column name="updated_at" type="datetime(6)" />
+			<column name="updated_by" type="BIGINT" />
+			<column name="country_label" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="country_name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="5">
+		<createTable tableName="languages">
+			<column autoIncrement="true" name="language_id" type="BIGINT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="created_at" type="datetime(6)" />
+			<column name="created_by" type="BIGINT" />
+			<column name="updated_at" type="datetime(6)" />
+			<column name="updated_by" type="BIGINT" />
+			<column name="language_label" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="language_name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="6">
+		<createTable tableName="roles">
+			<column autoIncrement="true" name="role_id" type="BIGINT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="created_at" type="datetime(6)" />
+			<column name="created_by" type="BIGINT" />
+			<column name="updated_at" type="datetime(6)" />
+			<column name="updated_by" type="BIGINT" />
+			<column name="role_name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="7">
+		<createTable tableName="salon_users">
+			<column name="user_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="8">
+		<createTable tableName="user_roles">
+			<column name="user_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_role_id" type="BIGINT">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="9">
+		<createTable tableName="users">
+			<column autoIncrement="true" name="user_id" type="BIGINT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="created_at" type="datetime(6)" />
+			<column name="created_by" type="BIGINT" />
+			<column name="updated_at" type="datetime(6)" />
+			<column name="updated_by" type="BIGINT" />
+			<column name="user_email" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_enabled" type="BIT(1)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_first_name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_last_name" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_password" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_phone_number" type="VARCHAR(255)" />
+			<column name="user_type" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_username" type="VARCHAR(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="user_verified" type="BIT(1)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<!-- Constraints -->
+	<changeSet author="Hamza Aljazara" id="10">
+		<addPrimaryKey columnNames="user_id"
+			constraintName="PRIMARY" tableName="admin_users" />
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="11">
+		<addPrimaryKey columnNames="user_id"
+			constraintName="PRIMARY" tableName="salon_users" />
+	</changeSet>
+
+	<!-- Unique Constraints -->
+	<changeSet author="Hamza Aljazara" id="12">
+		<addUniqueConstraint columnNames="user_email"
+			constraintName="UK_user_email" tableName="users" />
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="13">
+		<addUniqueConstraint columnNames="role_name"
+			constraintName="UK_role_name" tableName="roles" />
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="14">
+		<addUniqueConstraint columnNames="user_username"
+			constraintName="UK_user_username" tableName="users" />
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="15">
+		<addUniqueConstraint columnNames="address_email"
+			constraintName="UK_address_email" tableName="addresses" />
+	</changeSet>
+
+	<!-- Index -->
+	<changeSet author="Hamza Aljazara" id="16">
+		<createIndex indexName="fk_city_country_id"
+			tableName="cities">
+			<column name="country_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="17">
+		<createIndex indexName="fk_user_roles_role_id"
+			tableName="user_roles">
+			<column name="user_role_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="18">
+		<createIndex indexName="fk_user_roles_user_id"
+			tableName="user_roles">
+			<column name="user_id" />
+		</createIndex>
+	</changeSet>
+
+	<!-- Foreign Key Constraint -->
+	<changeSet author="Hamza Aljazara" id="19">
+		<addForeignKeyConstraint
+			baseColumnNames="user_id" baseTableName="salon_users"
+			constraintName="FK_user_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="user_id" referencedTableName="users" />
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="20">
+		<addForeignKeyConstraint
+			baseColumnNames="user_id" baseTableName="admin_users"
+			constraintName="FK_admin_users" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="user_id" referencedTableName="users" />
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="21">
+		<addForeignKeyConstraint
+			baseColumnNames="country_id" baseTableName="cities"
+			constraintName="FK_city_country_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="country_id" referencedTableName="countries" />
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="22">
+		<addForeignKeyConstraint
+			baseColumnNames="user_role_id" baseTableName="user_roles"
+			constraintName="FK_user_roles_role_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="role_id" referencedTableName="roles" />
+	</changeSet>
+	<changeSet author="Hamza Aljazara" id="23">
+		<addForeignKeyConstraint
+			baseColumnNames="user_id" baseTableName="user_roles"
+			constraintName="FK_user_roles_user_id" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="user_id" referencedTableName="users" />
+	</changeSet>
+</databaseChangeLog>
